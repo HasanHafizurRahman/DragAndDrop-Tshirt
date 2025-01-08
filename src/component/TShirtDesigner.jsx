@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import TShirtCanvas from "./TShirtCanvas";
 import Controls from "./Controls";
 import html2canvas from "html2canvas";
@@ -19,8 +19,8 @@ const TShirtDesigner = () => {
   };
 
   const handleExport = async () => {
-    setIsExporting(true); // Hide slider
-    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait briefly for UI update
+    setIsExporting(true); 
+    await new Promise((resolve) => setTimeout(resolve, 100)); 
 
     if (tShirtRef.current) {
       const canvas = await html2canvas(tShirtRef.current);
@@ -30,7 +30,7 @@ const TShirtDesigner = () => {
       link.click();
     }
 
-    setIsExporting(false); // Show slider again
+    setIsExporting(false); 
   };
 
   return (

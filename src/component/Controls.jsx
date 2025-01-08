@@ -1,4 +1,4 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 import "./Controls.css";
 
 const Controls = ({ handleLogoUpload, handleExport }) => {

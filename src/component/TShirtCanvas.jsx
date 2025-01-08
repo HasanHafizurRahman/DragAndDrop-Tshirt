@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
+/* eslint-disable react/prop-types */
+import { useRef, useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import "./TShirtCanvas.css";
 
@@ -7,7 +8,6 @@ const TShirtCanvas = ({ tShirtRef, logo, isExporting }) => {
   const [aspectRatio, setAspectRatio] = useState(1);
   const logoRef = useRef(null);
 
-  // Update aspect ratio when the logo is loaded
   useEffect(() => {
     if (logoRef.current) {
       const naturalWidth = logoRef.current.naturalWidth;
@@ -17,10 +17,10 @@ const TShirtCanvas = ({ tShirtRef, logo, isExporting }) => {
   }, [logo]);
 
   const handleResize = (e) => {
-    const newWidth = parseInt(e.target.value, 10); // Ensure it's a number
+    const newWidth = parseInt(e.target.value, 10); 
     setDimensions({
       width: newWidth,
-      height: newWidth / aspectRatio, // Maintain aspect ratio
+      height: newWidth / aspectRatio,
     });
   };
 
@@ -53,7 +53,7 @@ const TShirtCanvas = ({ tShirtRef, logo, isExporting }) => {
                 max="300"
                 value={dimensions.width}
                 className="resize-slider"
-                onChange={handleResize} // Handle resizing
+                onChange={handleResize} 
               />
             )}
           </div>
