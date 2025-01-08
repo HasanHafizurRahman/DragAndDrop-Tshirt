@@ -1,0 +1,18 @@
+.tshirt-canvas {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background-image: url('/tshirt.png'); 
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #ffcc00;
+  border-radius: 8px;
+}
+
+.logo {
+  position: absolute;
+  max-width: 30px;
+  max-height: 30px;
+  cursor: move;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
