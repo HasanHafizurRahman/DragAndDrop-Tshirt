@@ -1,7 +1,7 @@
 .tshirt-canvas {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   background-image: url('/tshirt.png'); 
   background-size: cover;
   background-position: center;
@@ -11,8 +11,54 @@
 
 .logo {
   position: absolute;
-  max-width: 30px;
-  max-height: 30px;
+  max-width: 100px;
+  max-height: 100px;
   cursor: move;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.resizable-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: move;
+}
+
+.resize-slider {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none; /* Removes default styling */
+  appearance: none;
+}
+
+/* Customize slider thumb */
+.resize-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #ffcc00;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.resize-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #ffcc00;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Prevent number bubble in some browsers */
+.resize-slider::-webkit-slider-runnable-track {
+  appearance: none;
 }

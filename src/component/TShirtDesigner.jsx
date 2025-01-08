@@ -6,6 +6,7 @@ import "./TShirtDesigner.css";
 
 const TShirtDesigner = () => {
   const [logo, setLogo] = useState(null);
+  const [isExporting, setIsExporting] = useState(false);
   const tShirtRef = useRef(null);
 
   const handleLogoUpload = (e) => {
@@ -18,6 +19,9 @@ const TShirtDesigner = () => {
   };
 
   const handleExport = async () => {
+    setIsExporting(true); // Hide slider
+    await new Promise((resolve) => setTimeout(resolve, 100)); // Wait briefly for UI update
+
     if (tShirtRef.current) {
       const canvas = await html2canvas(tShirtRef.current);
       const link = document.createElement("a");
@@ -25,11 +29,13 @@ const TShirtDesigner = () => {
       link.href = canvas.toDataURL();
       link.click();
     }
+
+    setIsExporting(false); // Show slider again
   };
 
   return (
     <div className="tshirt-designer">
-      <TShirtCanvas tShirtRef={tShirtRef} logo={logo} />
+      <TShirtCanvas tShirtRef={tShirtRef} logo={logo} isExporting={isExporting} />
       <Controls handleLogoUpload={handleLogoUpload} handleExport={handleExport} />
     </div>
   );
