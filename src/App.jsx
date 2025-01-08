@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useRef } from "react";
+import Draggable from "react-draggable";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [logo, setLogo] = useState(null);
+  const tShirtRef = useRef(null);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div style={{ backgroundColor: "#333", color: "#fff", height: "100vh", padding: "20px" }}>
+      <h1>T-Shirt Design Tool</h1>
+      <div style={{ display: "flex", gap: "20px" }}>
+   
+        <div
+          ref={tShirtRef}
+          style={{
+            position: "relative",
+            width: "300px",
+            height: "400px",
+            backgroundImage: "url('/tshirt.png')", 
+            backgroundSize: "cover",
+            border: "2px solid red",
+          }}
+        >
+          {logo && (
+            <Draggable>
+              <img
+                src={logo}
+                alt="Logo"
+                style={{
+                  position: "absolute",
+                  maxWidth: "100px",
+                  maxHeight: "100px",
+                  cursor: "move",
+                }}
+              />
+            </Draggable>
+          )}
+        </div>
 
-export default App
+       
+        <div style={{ flex: 1 }}>
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: "block", marginBottom: "20px" }}
+          />
+          
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default App;
